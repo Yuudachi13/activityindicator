@@ -1,10 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 
 export default function App() {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() =>{
+      setIsLoading(false);
+    }, 3000);
+  })
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      {isLoading &&
+      <ActivityIndicator color='red' size='large' animating={true} />
+     }
+     <ActivityIndicator size='large' color='purple' />
       <StatusBar style="auto" />
     </View>
   );
